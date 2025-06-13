@@ -1,15 +1,11 @@
 import { MemoryService } from '../src/services/memory';
-import { QdrantService } from '../src/services/qdrant';
-import { OpenAIService } from '../src/services/openai';
 import { MemoryType } from '../src/types/memory';
 
 async function testEdgeCases() {
-  const qdrant = new QdrantService();
-  const openai = new OpenAIService();
-  const memoryService = new MemoryService(qdrant, openai);
+  const memoryService = new MemoryService();
 
   console.log('Initializing Qdrant...');
-  await qdrant.initialize();
+  await memoryService.initialize();
 
   // Test 1: Empty content validation
   console.log('\n=== Test 1: Empty Content Validation ===');
